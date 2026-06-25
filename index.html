@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christine Ladd-Franklin — the antilogism</title>
+<meta name="description" content="LOGIKĒ XXI — Christine Ladd-Franklin (1847–1930). Studying under Peirce at Johns Hopkins, she gave Boolean logic a single, beautiful test for the validity of every syllogism: the ANTILOGISM (the inconsistent triad). A syllogism is valid exactly when its two premises plus the contradictory of its conclusion cannot all be true — and one such inconsistent triad yields three valid syllogisms at once. Live: test any syllogism by its antilogism. Honest: she completed every requirement for a Johns Hopkins PhD in 1882 and was denied the degree for being a woman — finally granted it in 1926, at age 78. David Lee Wise, two-layer honest.">
+<style>
+  :root{--bg:#0c0f17;--panel:#121622;--panel2:#19202f;--edge:#2a3346;--ink:#ede6d6;--dim:#b3ad9a;--faint:#7c7660;
+    --ochre:#d9b66a;--ochre2:#f0d79a;--proof:#5ad1ff;--proof2:#a7e6ff;--one:#7fe0a0;--zero:#fb7185;--amber:#fbbf24;--ember:#fb923c;
+    --mono:'SFMono-Regular',ui-monospace,'Cascadia Code',Menlo,Consolas,monospace;--serif:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);line-height:1.58;background-image:radial-gradient(1100px 560px at 75% -10%,#1c2436 0%,transparent 55%),radial-gradient(900px 500px at 0% 100%,#14110a 0%,transparent 55%);}
+  .wrap{max-width:1000px;margin:0 auto;padding:44px 26px 90px}
+  header{border-bottom:1px solid var(--edge);padding-bottom:22px;margin-bottom:24px}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--ochre);opacity:.95}
+  h1{font-family:Georgia,serif;font-size:38px;line-height:1.08;margin:.3em 0 .14em;font-weight:600}h1 em{color:var(--ochre2);font-style:italic}
+  .who{font-family:var(--mono);font-size:12px;color:var(--faint);letter-spacing:.04em}
+  .sub{color:var(--dim);font-size:16px;max-width:74ch;margin-top:14px}.sub b{color:var(--ink)}
+  .verdicts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:22px 0}@media(max-width:720px){.verdicts{grid-template-columns:1fr}}
+  .vc{border:1px solid var(--edge);border-radius:11px;padding:13px 15px;border-top-width:3px;background:rgba(18,22,34,.6)}
+  .vc .badge{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.12em}
+  .vc.s{border-top-color:var(--one)}.vc.s .badge{color:var(--one)} .vc.m{border-top-color:var(--amber)}.vc.m .badge{color:var(--amber)} .vc.f{border-top-color:var(--ember)}.vc.f .badge{color:var(--ember)}
+  .vc p{font-size:12px;color:var(--dim);margin:6px 0 0;line-height:1.45}.vc p b{color:var(--ink)}
+  section{margin:36px 0}
+  h2{font-size:13px;font-family:var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--ochre2);border-left:2px solid var(--ochre);padding-left:11px;margin:0 0 6px}
+  .lede{color:var(--dim);font-size:15px;margin:0 0 18px;max-width:80ch}
+  .panel{background:linear-gradient(180deg,var(--panel),#0a0d14);border:1px solid var(--edge);border-radius:14px;padding:20px;box-shadow:0 24px 60px -40px #000}
+  .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+  button{font-family:var(--mono);font-size:12px;color:var(--ink);background:#1a2030;border:1px solid var(--edge);border-radius:8px;padding:8px 12px;cursor:pointer}button:hover{background:#222b3e;border-color:var(--ochre)}
+  .syl{font-family:var(--mono);font-size:11px;border:1px solid var(--edge);border-radius:7px;padding:7px 11px;cursor:pointer;color:var(--dim)}.syl:hover{border-color:var(--ochre)}.syl.on{border-color:var(--proof);color:var(--proof2);box-shadow:0 0 0 1px var(--proof) inset}
+  .props{font-family:Georgia,serif;font-size:16px;line-height:1.9;margin:6px 0}
+  .props .pr{color:var(--ink)}.props .lab{font-family:var(--mono);font-size:11px;color:var(--faint);margin-right:8px}
+  .triad{border:1px solid var(--edge);border-radius:10px;padding:13px 15px;margin-top:12px;background:rgba(0,0,0,.16)}
+  .triad .th{font-family:var(--mono);font-size:11px;color:var(--ochre);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+  .triad .tr{font-family:Georgia,serif;font-size:14.5px;color:var(--dim)}
+  .verdict{font-family:var(--mono);font-size:15px;text-align:center;margin-top:14px;min-height:26px}
+  .verdict b.v{color:var(--one)}.verdict b.x{color:var(--zero)}
+  .rot{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+  .note{color:var(--dim);font-size:13.5px;border-left:2px solid var(--edge);padding-left:13px;margin:16px 0 0}.note b{color:var(--ink)}
+  footer{margin-top:44px;border-top:1px solid var(--edge);padding-top:18px;color:var(--faint);font-family:var(--mono);font-size:11px;line-height:1.7}
+  footer a,.bar2 a{color:var(--ochre)}.bar2{font-family:var(--mono);font-size:11.5px;margin-bottom:16px}.bar2 a{text-decoration:none;border-bottom:1px dotted #4a4126}
+  code{font-family:var(--mono);color:var(--ochre2);background:#15120a;padding:1px 5px;border-radius:5px}
+  blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--ochre);color:var(--ink);font-style:italic;font-size:15px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="bar2"><a href="https://davidwise01.github.io/ud0/">◄ UD0</a> &nbsp; <a href="https://davidwise01.github.io/ada-lovelace/">← Ada Lovelace</a> &nbsp; LOGIKĒ · XXI · the other half</div>
+<header>
+  <div class="kicker">LOGIKĒ · XXI · the antilogism</div>
+  <h1>Christine <em>Ladd-Franklin</em></h1>
+  <div class="who">1847 – 1930 · Connecticut &amp; Johns Hopkins &amp; Columbia · student of C. S. Peirce · logician &amp; vision scientist</div>
+  <div class="sub">Aristotle left a sprawling catalogue of valid and invalid syllogisms; Boole turned logic into algebra. Ladd-Franklin — studying under [[charles-peirce]] — found the <b>single test</b> that unifies all of it. Her insight: forget memorising which moods are valid. A syllogism is valid exactly when its two premises, taken together with the <em>contradictory</em> of its conclusion, form an <b>inconsistent triad</b> — three statements that cannot all be true at once. She called it the <b>antilogism</b>, and it is gorgeously symmetric: from one inconsistent triad you can read off <em>three</em> valid syllogisms. It was, for decades, the cleanest decision procedure for the syllogism in existence.</div>
+</header>
+<div class="verdicts">
+  <div class="vc s"><span class="badge">✓ STRONG</span><p><b>A real, elegant result.</b> The antilogism is a correct and unifying test for syllogistic validity — a genuine advance in algebraic logic, recognised by Peirce and standard in logic teaching for generations.</p></div>
+  <div class="vc m"><span class="badge">◐ ONE PIECE OF A FIELD</span><p><b>Syllogistic, not all logic.</b> The antilogism settles the classical syllogism beautifully; it is not, and was not meant to be, the whole of modern predicate logic ([[gottlob-frege]]). A sharp tool with a defined edge.</p></div>
+  <div class="vc f"><span class="badge">◔ THE DEGREE WITHHELD</span><p><b>Excluded by rule, not merit.</b> She completed every requirement for a Johns Hopkins PhD in 1882; the university refused the degree to a woman. She got it in <b>1926 — forty-four years later, at 78.</b> The injustice, named.</p></div>
+</div>
+
+<section>
+  <h2>I · The antilogism — one test for every syllogism</h2>
+  <p class="lede">Pick a syllogism. The machine forms its <b>antilogism</b> — the two premises plus the <em>contradictory</em> of the conclusion — and checks whether those three can all be true together. If they <b>cannot</b> (an inconsistent triad), the original argument is <b>valid</b>: denying its conclusion while granting its premises is impossible. If they <em>can</em> all hold, the argument is invalid. (Checked live by enumerating every possible Venn arrangement of the three terms.)</p>
+  <div class="panel">
+    <div class="controls" id="picker"></div>
+    <div class="props" id="props"></div>
+    <div class="triad">
+      <div class="th">its antilogism — premises + the contradictory of the conclusion</div>
+      <div class="tr" id="triad"></div>
+    </div>
+    <div class="verdict" id="verdict"></div>
+    <div class="note">The whole of Aristotle's syllogistic collapses into one question: <em>is this triad inconsistent?</em> ⚑ And the symmetry is the prize — any inconsistent triad gives <b>three</b> valid syllogisms (drop any one statement, negate it, and conclude it from the other two). One inconsistency, three theorems. This is the syllogism finally made <b>algebraic and mechanical</b> — a decision procedure, the kind of thing a computer runs.</div>
+  </div>
+  <blockquote>"The cause of [a syllogism's validity] is that the three propositions … form an inconsistent triad." <span style="color:var(--faint);font-style:normal;font-size:12px">— C. Ladd, "On the Algebra of Logic", 1883</span></blockquote>
+</section>
+
+<section>
+  <h2>II · One inconsistency, three syllogisms</h2>
+  <p class="lede">Here is the antilogism's deep economy. Take the current inconsistent triad. Drop any one of its three statements and assert its <em>opposite</em> as a conclusion from the remaining two — you get a valid syllogism, every time. Three buttons, three theorems from a single fact of inconsistency.</p>
+  <div class="panel">
+    <div class="rot" id="rot"></div>
+    <div class="props" id="derived" style="margin-top:10px;min-height:60px"></div>
+    <div class="note">This is why she could throw away the medieval mnemonics (Barbara, Celarent, Darii…): they are just the <em>faces</em> of inconsistent triads. Find the inconsistencies, and you have found every valid syllogism there is. ⚑ A unifying principle in place of a list — the move that turns a catalogue into a <b>science</b>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>III · The logic, and the forty-four years</h2>
+  <p class="note" style="border-color:var(--amber)"><b style="color:var(--amber)">Gate kept on.</b> The <b>mathematics is clean and real</b>: the antilogism is a correct, elegant decision procedure for the categorical syllogism, praised by Peirce and taught for generations — a genuine contribution to the algebra of logic, even if it addresses the classical syllogism rather than the full predicate logic that [[gottlob-frege]] was building in the same years. What must be told without softening is the <b>cost</b>. Christine Ladd entered Johns Hopkins in 1878 — when it did not admit women — by the intervention of the logician J. J. Sylvester, who recognised her work; she was permitted to attend on the condition that her name not appear in the register. She completed every requirement for the doctorate and wrote a dissertation Peirce published in his landmark 1883 volume — and the university <b>refused to grant her the degree because she was a woman</b>. She was finally awarded it in <b>1926, forty-four years later, at the age of 78</b>, four years before her death. In between she did major work in the theory of <em>colour vision</em> as well, and spent decades barred from the regular faculty positions her male peers held automatically. Her logic stands entirely on its own; the four-decade delay stands as the plainest possible illustration of why this lineage was, for nineteen spheres, "all men." ⚑ [[ada-lovelace]] ← · next → Rózsa Péter.</p>
+</section>
+
+<footer>
+  CHRISTINE LADD-FRANKLIN · LOGIKĒ XXI · two-layer honest · the other half<br>
+  live antilogism validity tester (a syllogism is valid iff premises + ¬conclusion form an inconsistent triad — checked by full Venn-region enumeration; verified Barbara/Celarent/Darii valid, undistributed-middle invalid) + one triad → three syllogisms<br>
+  the antilogism / inconsistent triad (1883) = a unifying decision procedure for the syllogism · studied under Peirce · also a theory of colour vision<br>
+  ← <a href="https://davidwise01.github.io/ada-lovelace/">Ada Lovelace</a> · next → <b>Rózsa Péter</b> (recursion theory)<br>
+  LOGIKĒ · the lineage of logical mathematics · governor David Lee Wise · CC-BY-ND-4.0
+</footer>
+</div>
+<script>
+"use strict";
+(function(){
+  const $=id=>document.getElementById(id);
+  // categorical proposition validity via Venn-region satisfiability (3 terms S,M,P; 8 regions)
+  const regions=[]; for(let b=0;b<8;b++) regions.push({S:!!(b&1),M:!!(b&2),P:!!(b&4)});
+  function holds(p, model){
+    const g=(r,t)=>r[t];
+    if(p.type==="A") return regions.every((r,i)=>!(model[i]&&g(r,p.x)&&!g(r,p.y)));
+    if(p.type==="E") return regions.every((r,i)=>!(model[i]&&g(r,p.x)&&g(r,p.y)));
+    if(p.type==="I") return regions.some((r,i)=>model[i]&&g(r,p.x)&&g(r,p.y));
+    if(p.type==="O") return regions.some((r,i)=>model[i]&&g(r,p.x)&&!g(r,p.y));
+  }
+  const NEG={A:"O",O:"A",E:"I",I:"E"};
+  function negate(p){ return {type:NEG[p.type],x:p.x,y:p.y}; }
+  // inconsistent = no model satisfies all
+  function inconsistent(props){
+    for(let mm=0;mm<256;mm++){ const model=[]; for(let i=0;i<8;i++) model[i]=!!(mm&(1<<i));
+      if(props.every(p=>holds(p,model))) return false; }
+    return true;
+  }
+  function txt(p){
+    const T={S:"S",M:"M",P:"P"};
+    const X=T[p.x],Y=T[p.y];
+    if(p.type==="A") return "All "+X+" are "+Y;
+    if(p.type==="E") return "No "+X+" are "+Y;
+    if(p.type==="I") return "Some "+X+" are "+Y;
+    if(p.type==="O") return "Some "+X+" are not "+Y;
+  }
+  const SYLS=[
+    {name:"Barbara", p1:{type:"A",x:"M",y:"P"}, p2:{type:"A",x:"S",y:"M"}, c:{type:"A",x:"S",y:"P"}},
+    {name:"Celarent",p1:{type:"E",x:"M",y:"P"}, p2:{type:"A",x:"S",y:"M"}, c:{type:"E",x:"S",y:"P"}},
+    {name:"Darii",   p1:{type:"A",x:"M",y:"P"}, p2:{type:"I",x:"S",y:"M"}, c:{type:"I",x:"S",y:"P"}},
+    {name:"Ferio",   p1:{type:"E",x:"M",y:"P"}, p2:{type:"I",x:"S",y:"M"}, c:{type:"O",x:"S",y:"P"}},
+    {name:"undistributed middle (invalid)", p1:{type:"A",x:"P",y:"M"}, p2:{type:"A",x:"S",y:"M"}, c:{type:"A",x:"S",y:"P"}},
+    {name:"illicit (invalid)", p1:{type:"A",x:"M",y:"P"}, p2:{type:"E",x:"S",y:"M"}, c:{type:"E",x:"S",y:"P"}}
+  ];
+  let cur=0;
+  function render(){
+    $('picker').innerHTML=SYLS.map((s,i)=>'<span class="syl'+(i===cur?' on':'')+'" data-i="'+i+'">'+s.name+'</span>').join('');
+    $('picker').querySelectorAll('.syl').forEach(e=>e.onclick=()=>{cur=+e.dataset.i;render();});
+    const s=SYLS[cur];
+    $('props').innerHTML=
+      '<div><span class="lab">premise 1</span><span class="pr">'+txt(s.p1)+'</span></div>'+
+      '<div><span class="lab">premise 2</span><span class="pr">'+txt(s.p2)+'</span></div>'+
+      '<div><span class="lab">∴ concl.</span><span class="pr">'+txt(s.c)+'</span></div>';
+    const triad=[s.p1,s.p2,negate(s.c)];
+    $('triad').innerHTML=triad.map(p=>txt(p)).join(' &nbsp;·&nbsp; ');
+    const inc=inconsistent(triad);
+    $('verdict').innerHTML = inc
+      ? 'The triad is <b style="color:var(--one)">inconsistent</b> → the syllogism is <b class="v">VALID</b>.'
+      : 'The triad is <b style="color:var(--amber)">consistent</b> (a model satisfies all three) → the syllogism is <b class="x">INVALID</b>.';
+    // module II: rotation
+    $('rot').innerHTML = inc
+      ? triad.map((_,k)=>'<button data-k="'+k+'">drop statement '+(k+1)+'</button>').join('')
+      : '<span style="font-family:var(--mono);font-size:12px;color:var(--faint)">(this triad is consistent — no syllogisms to derive)</span>';
+    $('derived').innerHTML = inc ? '<span style="color:var(--faint);font-family:var(--mono);font-size:12px">drop a statement above to read off a valid syllogism</span>' : '';
+    if(inc){
+      $('rot').querySelectorAll('button').forEach(b=>b.onclick=()=>{
+        const k=+b.dataset.k; const prem=triad.filter((_,j)=>j!==k); const concl=negate(triad[k]);
+        $('derived').innerHTML='<div><span class="lab">premise</span>'+txt(prem[0])+'</div><div><span class="lab">premise</span>'+txt(prem[1])+'</div><div><span class="lab">∴ valid</span><span style="color:var(--one)">'+txt(concl)+'</span></div>';
+      });
+    }
+  }
+  render();
+})();
+</script>
+</body>
+</html>

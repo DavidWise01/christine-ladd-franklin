@@ -2,8 +2,8 @@ ROOT0-DLW-CHAIN-v1
 index : 1010
 slug  : christine-ladd-franklin
 seal  : 8fb34d99d4a8e0c9f9f795dfd471698d06e1c914718452839e2be04a49449c3d
-prev  : f64bbea53aa629146e8a4b10b4de887638d0190ebd5ad256a511ab18c06ec19f
-link  : 77754190b594c7686c8779a2e82c7875871f651f546c9f6ab5c7869f1ecfd1fb
-head  : f7444724835fd968bd2eac85811f9fa823a18d20a57907b4fade8d96b70b5409
+prev  : 31ff0cacb49ac2e0319b62b2860c03f1d61436ae0dd046514dda36a0d467b326
+link  : 2f2c5472156261b65852eac61efb6c8b31fc55dc85fb942ccf822ce7e5d8c87d
+head  : c4d41afeaef76470528856d54d86cf480a0e1c2fc8ebc60fbb9eb8e442585f2b
 
 — the tether: link = sha256(index|slug|seal|prev). the chain head commits to the whole corpus.
